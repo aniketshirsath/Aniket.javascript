@@ -47,19 +47,27 @@
     <script>
         const countdownElement = document.getElementById('countdown');
         const quoteElement = document.getElementById('quote');
-
+        let countdownInterval; // Store the interval ID
+    
         function setCountdown() {
-            const FixedDate = new Date(document.getElementById('datetime').value);
-            setInterval(() => {
+            const fixedDate = new Date(document.getElementById('datetime').value);
+            clearInterval(countdownInterval); // Clear any previous intervals
+    
+            countdownInterval = setInterval(() => {
                 const now = new Date().getTime();
-                const distance = FixedDate - now;
+                const distance = fixedDate - now;
+                if (distance <= 0) {
+                    clearInterval(countdownInterval); // Stop the interval when the countdown is over
+                    countdownElement.innerHTML = "Countdown is over!";
+                    return;
+                }
                 const days = Math.floor(distance / (1000 * 60 * 60 * 24));
                 const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
                 const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
                 const seconds = Math.floor((distance % (1000 * 60)) / 1000);
                 countdownElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
             }, 1000);
-
+    
             const quotes = [
                 "The only way to do great work is to love what you do. - Steve Jobs",
                 "Success is not final, failure is not fatal: It is the courage to continue that counts. - Winston Churchill",
@@ -69,10 +77,11 @@
                 "Don't watch the clock; do what it does. Keep going. - Sam Levenson",
                 "You are never too old to set another goal or to dream a new dream. - C.S. Lewis"
             ];
-
+    
             const randomIndex = Math.floor(Math.random() * quotes.length);
             quoteElement.innerHTML = quotes[randomIndex];
         }
     </script>
+    
 </body>
 </html>
