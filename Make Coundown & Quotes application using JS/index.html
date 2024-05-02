@@ -5,14 +5,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Countdown</title>
 </head>
+<style>
+    body{
+        background: url('https://images.unsplash.com/photo-1439754389055-9f0855aa82c2?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+        background-size: cover;
+    }
+    .btn{
+        padding: 20px;
+        border-radius: 10px;
+    }
+    input{
+        padding: 20px;
+        border-radius: 10px;
+        width: 20%;
+        background-color: linear-gradient(rgba(0, 0, 0, 0.7),rgba(0, 0, 0, 0.7));
+    }
+    .times{
+        margin-top: 5%;
+        margin-left: 15%;
+        color: white;
+    }
+    .label{
+        font-size: large;
+        font-weight: 700;
+        color: white;
+        margin-right: 2%;
+    }
+</style>
 <body>
+    <div class="times">
     <h1>Countdown</h1>
     <div id="countdown"></div>
     <div id="quote"></div>
     <div>
-        <label for="datetime">Enter Date and Time:</label>
+        <label for="datetime" class="label">Enter Date and Time:</label>
         <input type="datetime-local" id="datetime">
-        <button onclick="setCountdown()">Start</button>
+        <button onclick="setCountdown()" class="btn">Start</button>
+    </div>
     </div>
 
     <script>
