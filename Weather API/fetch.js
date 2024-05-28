@@ -1,5 +1,5 @@
 function fetchdata() {
-    fetch("http://localhost:3000/data")
+    fetch("")
         .then((res) => res.json())
         .then((data) => Cardlist(data))
         .catch((err) => console.log(err));
